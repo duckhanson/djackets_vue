@@ -22,8 +22,13 @@
         id="navbar-menu"
         v-bind:class="{ 'is-active': showMobileMenu }">
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item">Summer</router-link>
-          <router-link to="/winter" class="navbar-item">Winter</router-link>
+          <router-link
+            v-for="category in categories"
+            :key="category.id"
+            :to="`/${category.url}`"
+            class="navbar-item">
+            {{ category.name }}
+          </router-link>
 
           <div class="navbar-item">
             <div class="buttons">
@@ -67,8 +72,14 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      // TODO: request to backend to get categories dynamically.
+      categories: [
+        { name: '烤鴨', id: 0, url: 'ducks'},
+        { name: '配料', id: 1, url: 'sides'},
+        { name: '其他品項', id: 2, url: 'others'}
+      ],
       showMobileMenu: false,
-      cartTotalLength: parseInt(0),
+      cartTotalLength: parseInt(0)
     };
   }
 };

@@ -12,7 +12,7 @@
       </div>
 
       <ProductBox
-        v-for="product in latestProducts"
+        v-for="product in lastest_products"
         v-bind:key="product.id"
         v-bind:product="product" />
     </div>
@@ -20,12 +20,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 import ProductBox from '@/components/ProductBox'
 
 export default {
   name: 'HomeView',
   components: {
     ProductBox,
-  }
+  },
+
+  data() {
+    return {
+      lastest_products: [],
+    }
+  },
+
+  mounted() {
+    this.getLastestProducts()
+  },
+
+  methods: {
+    getLastestProducts() {
+      console.log(axios.defaults.baseURL + 'api/v1/lastest-products/')
+      axios
+        .get('api/v1/lastest-products/')
+        .then(response => {
+          this.lastest_products = response.data
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  },
 };
 </script>

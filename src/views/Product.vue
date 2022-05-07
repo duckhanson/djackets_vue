@@ -1,6 +1,6 @@
 <template>
     <div class="page-product">
-        <!-- <div class="columns is-multiline">
+        <div class="columns is-multiline">
             <div class="column is-9">
                 <figure class="image mb-6">
                     <img v-bind:src="product.get_image">
@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
         async getProduct() {
             const category_slug = this.$route.params.category_slug
             const product_slug = this.$route.params.product_slug
-
+            console.log(`/api/v1/products/${category_slug}/${product_slug}`)
             await axios
                 .get(`/api/v1/products/${category_slug}/${product_slug}`)
                 .then(response => {

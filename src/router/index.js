@@ -10,6 +10,7 @@ import SignUp from '@/views/SignUp.vue'
 import Login from '@/views/Login.vue'
 import MyAccount from '@/views/MyAccount.vue'
 import Checkout from '@/views/Checkout.vue'
+import Success from '@/views/Success.vue'
 
 const routes = [
   {
@@ -68,6 +69,11 @@ const routes = [
     path: '/cart/checkout',
     name: 'Checkout',
     component: Checkout
+  },
+  {
+    path: '/cart/checkout/success',
+    name: 'Success',
+    component: Success
   }
 ]
 

@@ -29,6 +29,13 @@ export default {
   beforeCreate() {
     // use commit to call mutations @store
     this.$store.commit('initalizeStore')
+
+    const token = this.$store.state.token
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = "Token " + token
+    } else {
+      axios.defaults.headers.common['Authorization'] = ""
+    }
   },
 
 

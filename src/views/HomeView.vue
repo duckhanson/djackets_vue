@@ -40,9 +40,10 @@ export default {
   },
 
   methods: {
-    getLastestProducts() {
-      console.log(axios.defaults.baseURL + 'api/v1/lastest-products/')
-      axios
+    async getLastestProducts() {
+      this.$store.commit('setIsLoading', true)
+      
+      await axios
         .get('api/v1/lastest-products/')
         .then(response => {
           this.lastest_products = response.data
@@ -50,6 +51,7 @@ export default {
         .catch(err => {
           console.log(err)
         })
+      this.$store.commit('setIsLoading', false)
     }
   },
 };

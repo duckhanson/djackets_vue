@@ -103,13 +103,13 @@
 
         <div id="card-element" class="mb-5"></div>
 
-        <!-- <template v-if="cartTotalLength">
-                    <hr> -->
+        <template v-if="cartTotalLength">
+          <hr />
 
-        <button class="button is-dark" @click="submitForm">
-          Pay with Stripe
-        </button>
-        <!-- </template> -->
+          <button class="button is-dark" @click="submitForm">
+            Pay with Stripe
+          </button>
+        </template>
       </div>
     </div>
   </div>
@@ -143,11 +143,13 @@ export default {
     this.cart = this.$store.state.cart
 
     if (this.cartTotalLength > 0) {
-        this.stripe = Stripe('pk_test_51Kwv7RBPlNww8LwxYaDhOsh5aY67JrD7auVkEfVlTqpx86R6Jso8IN3KA3yfS0Paqwg9hpRLkL44z7I0VQADL03600ZFm7TX6H')
-        const elements = this.stripe.elements();
-        this.card = elements.create('card', { hidePostalCode: true })
+      this.stripe = Stripe(
+        'pk_test_51Kwv7RBPlNww8LwxYaDhOsh5aY67JrD7auVkEfVlTqpx86R6Jso8IN3KA3yfS0Paqwg9hpRLkL44z7I0VQADL03600ZFm7TX6H'
+      )
+      const elements = this.stripe.elements()
+      this.card = elements.create('card', { hidePostalCode: true })
 
-        this.card.mount('#card-element')
+      this.card.mount('#card-element')
     }
   },
   methods: {
@@ -251,9 +253,9 @@ export default {
       }, 0)
     },
     cartTotalLength() {
-        return this.cart.items.reduce((acc, curVal) => {
-            return acc += curVal.quantity
-        }, 0)
+      return this.cart.items.reduce((acc, curVal) => {
+        return (acc += curVal.quantity)
+      }, 0)
     }
   }
 }

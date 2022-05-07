@@ -28,7 +28,7 @@ export default createStore({
         exists[0].quantity =
           parseInt(exists[0].quantity) + parseInt(item.quantity);
       } else {
-        state.cart.push(item)
+        state.cart.items.push(item);
       }
 
       localStorage.setItem('cart', JSON.stringify(state.cart));

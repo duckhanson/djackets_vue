@@ -64,10 +64,11 @@ export default {
                     toast({
                         message: 'Something went wrong. Please try again.',
                         type: 'is-danger',
-                        dismissible: true,
+                        dismissible: false,
                         pauseOnHover: true,
                         duration: 2000,
                         position: 'bottom-right',
+                        closeOnClick: true,
                     })
                 })
             this.$store.commit('setIsLoading', false)

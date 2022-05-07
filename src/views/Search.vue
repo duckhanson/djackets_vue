@@ -6,6 +6,8 @@
 
                 <h2 class="is-size-5 has-text-grey">Search term: "{{ query }}"</h2>
             </div>
+            
+            <LoadingCircle/>
 
             <ProductBox 
                 v-for="product in products"
@@ -60,6 +62,16 @@ export default {
                     console.log(error)
                 })
             this.$store.commit('setIsLoading', false)
+
+            toast({
+                message: 'Successfully searched',
+                type: 'is-success',
+                dismissible: false,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+                closeOnClick: true,
+            })
         },
     },
 }

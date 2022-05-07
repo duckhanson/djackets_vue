@@ -15,7 +15,7 @@ export default createStore({
       if (localStorage.getItem('cart')) {
         state.cart = JSON.parse(localStorage.getItem('cart'));
       } else {
-        localStorage.setItem(JSON.stringify(state.cart));
+        localStorage.setItem('cart', JSON.stringify(state.cart));
       }
     },
 
@@ -31,7 +31,7 @@ export default createStore({
         state.cart.push(item)
       }
 
-      localStorage.setItem(JSON.stringify(state.cart))
+      localStorage.setItem('cart', JSON.stringify(state.cart));
     }
   },
   actions: {},

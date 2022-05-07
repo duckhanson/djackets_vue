@@ -42,7 +42,8 @@ export default {
   },
 
   mounted() {
-    this.getLastestProducts()
+    this.getLastestProducts(),
+    document.title = '首頁 | ' + this.$store.state.abb_store_name
   },
 
   methods: {

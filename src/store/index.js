@@ -2,6 +2,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
+    abb_store_name: '世賢烤鴨',
     cart: {
       items: []
     },

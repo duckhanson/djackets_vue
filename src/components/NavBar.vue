@@ -2,7 +2,7 @@
   <nav class="navbar is-dark">
     <div class="navbar-brand">
       <router-link to="/" class="navbar-item"
-        ><strong>SXRD</strong></router-link
+        ><strong>{{$store.state.abb_store_name}}</strong></router-link
       >
       <a
         class="navbar-burger"

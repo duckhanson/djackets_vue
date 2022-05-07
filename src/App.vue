@@ -86,6 +86,10 @@ export default {
     };
   },
 
+  mounted() {
+    this.cart = this.$store.state.cart
+  },
+
   beforeCreate() {
     // use commit to call mutations @store
     this.$store.commit('initalizeStore')

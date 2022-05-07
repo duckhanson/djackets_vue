@@ -1,5 +1,7 @@
 <template>
     <div class="page-product">
+        <LoadingCircle/>
+
         <div class="columns is-multiline">
             <div class="column is-9">
                 <figure class="image mb-6">
@@ -33,9 +35,15 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import LoadingCircle from '@/components/LoadingCircle'
 
 export default {
     name: 'Product',
+
+    components: {
+        LoadingCircle,
+    },
+
     data() {
         return {
             product: {},

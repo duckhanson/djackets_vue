@@ -2,7 +2,7 @@
   <nav class="navbar is-dark">
     <div class="navbar-brand">
       <router-link to="/" class="navbar-item"
-        ><strong>{{$store.state.abb_store_name}}</strong></router-link
+        ><strong>{{ $store.state.abb_store_name }}</strong></router-link
       >
       <a
         class="navbar-burger"
@@ -24,7 +24,7 @@
         <router-link
           v-for="category in categories"
           :key="category.id"
-          :to="`/${category.url}`"
+          :to="category.get_absolute_url"
           class="navbar-item">
           {{ category.name }}
         </router-link>
@@ -54,7 +54,6 @@
   </nav>
 </template>
 
-
 <script>
 import axios from 'axios';
 
@@ -64,9 +63,9 @@ export default {
     return {
       // TODO: request to backend to get categories dynamically.
       categories: [
-        { name: '烤鴨', id: 0, url: 'ducks' },
-        { name: '配料', id: 1, url: 'sides' },
-        { name: '其他品項', id: 2, url: 'others' }
+        // { name: '烤鴨', id: 0, url: 'ducks' },
+        // { name: '配料', id: 1, url: 'sides' },
+        // { name: '其他品項', id: 2, url: 'others' }
       ],
       showMobileMenu: false,
       cartTotalLength: parseInt(0),
@@ -76,8 +75,34 @@ export default {
     };
   },
 
+  methods: {
+    async getCategoryNames() {
+      this.$store.commit('setIsLoading', true);
+      await axios
+        .get('api/v1/category-names/')
+        .then((response) => {
+          this.categories = response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      this.$store.commit('setIsLoading', false);
+    }
+  },
+
+  computed: {
+    cartTotalLength() {
+      let totalLength = 0;
+      for (let i = 0; i < this.cart.items.length; i++) {
+        totalLength += this.cart.items[i].quantity;
+      }
+      return totalLength;
+    }
+  },
+
   mounted() {
     this.cart = this.$store.state.cart;
+    this.getCategoryNames();
   },
 
   beforeCreate() {
@@ -98,6 +123,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

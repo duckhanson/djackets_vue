@@ -2,7 +2,7 @@
     <div class="page-my-account">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">My account</h1>
+                <h1 class="title">我的帳號</h1>
             </div>
 
             <div class="column is-12">
@@ -37,7 +37,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'My account | ' + this.$store.state.abb_store_name
+        document.title = '帳號 | ' + this.$store.state.abb_store_name
         this.getMyOrders()
     },
     methods: {

@@ -55,7 +55,7 @@
           <div class="buttons">
             <template v-if="$store.state.isAuthenticated">
               <router-link to="/my-account" class="button is-light"
-                >My account</router-link
+                >我的帳號</router-link
               >
             </template>
 

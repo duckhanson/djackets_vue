@@ -59,7 +59,7 @@ export default {
           console.log(err)
         })
       this.$store.commit('setIsLoading', false)
-    }
+    },
   },
 };
 </script>

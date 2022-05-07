@@ -79,20 +79,21 @@ export default {
         { name: '其他品項', id: 2, url: 'others'}
       ],
       showMobileMenu: false,
-      cartTotalLength: parseInt(0)
+      cartTotalLength: parseInt(0),
+      cart: {
+        items: []
+      },
     };
-  }
+  },
+
+  beforeCreate() {
+    // use commit to call mutations @store
+    this.$store.commit('initalizeStore')
+  },
 };
 </script>
 
 <style lang="scss">
 @import '../node_modules/bulma';
 
-// #wrapper {
-//   margin: 0;
-//   height: 100vh;
-//   width: 100vw;
-//   display: flexbox;
-//   justify-content: space-between;
-// }
 </style>

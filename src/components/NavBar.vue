@@ -20,6 +20,28 @@
       class="navbar-menu"
       id="navbar-menu"
       v-bind:class="{ 'is-active': showMobileMenu }">
+
+      <div class="navbar-start">
+          <div class="navbar-item">
+            <form method="get" action="/search">
+              <div class="field has-addons">
+                <div class="control">
+                  <input type="text" class="input" placeholder="搜尋" name="query">
+                </div>
+
+                <div class="control">
+                  <button class="button is-success">
+                      <span class="icon">
+                      <i class="fas fa-search"></i>
+                      </span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
       <div class="navbar-end">
         <router-link
           v-for="category in categories"
@@ -62,11 +84,7 @@ export default {
   data() {
     return {
       // TODO: request to backend to get categories dynamically.
-      categories: [
-        // { name: '烤鴨', id: 0, url: 'ducks' },
-        // { name: '配料', id: 1, url: 'sides' },
-        // { name: '其他品項', id: 2, url: 'others' }
-      ],
+      categories: [],
       showMobileMenu: false,
       cartTotalLength: parseInt(0),
       cart: {

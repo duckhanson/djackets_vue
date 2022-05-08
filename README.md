@@ -1,4 +1,4 @@
-# djackets_vue
+# sxrd_vue
 
 ## Project setup
 ```
